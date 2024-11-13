@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noviindus_project/view/components/common_button.dart';
 import 'package:noviindus_project/view/components/mytextfiled.dart';
 import 'package:noviindus_project/view/pages/home_page.dart';
 
@@ -46,37 +47,29 @@ class LoginPage extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           MyTextFiled(
+            hinttext: 'Enter Your Email',
+            controller: null,
             name: 'Email',
           ),
           const SizedBox(height: 20),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'Password',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+          MyTextFiled(
+            hinttext: 'Enter Password',
+            controller: null,
+            name: 'Password',
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              );
+          CommonButton(
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomePage()));
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
-              minimumSize: const Size(double.infinity, 50),
-            ),
-            child: const Text('Login', style: TextStyle(fontSize: 18)),
+            name: 'Login',
           ),
           const SizedBox(height: 20),
           const Text.rich(
             TextSpan(
               text:
-                  'By creating or logging into an account you are agreeing with our ',
+                  'By creating or logging into an account you are agreeing\n with our ',
               style: TextStyle(fontSize: 12),
               children: [
                 TextSpan(
@@ -96,7 +89,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ],
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
         ],
       ),
