@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/colors.dart';
 import 'package:noviindus_project/view/components/bookingcard.dart';
 import 'package:noviindus_project/view/components/common_button.dart';
+import 'package:noviindus_project/view/components/mytextfiled.dart';
+import 'package:noviindus_project/view/pages/treatment_reg.dart';
+import 'package:noviindus_project/view_model/patient_vm.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final patientViewModel = Provider.of<PatientViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -28,30 +34,16 @@ class HomePage extends StatelessWidget {
             Row(
               children: [
                 Flexible(
-                  flex: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search for treatments',
-                        hintStyle: const TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 12),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                    flex: 3,
+                    child: MyTextFiled(
+                      name: '',
+                      hinttext: 'Search for treatments',
+                      prefixIcon: Icon(Icons.search),
+                    )),
                 Flexible(
                   flex: 1,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => patientViewModel.fetchPatients(),
                     child: Container(
                       height: 40,
                       width: 85,
@@ -93,14 +85,33 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return BookingCard(index: index + 1);
-                },
-              ),
+              child: patientViewModel.isLoading
+                  ? const Center(child:  CircularProgressIndicator())
+                  : patientViewModel.errorMessage.isNotEmpty
+                      ? Text(patientViewModel.errorMessage)
+                      : ListView.builder(
+                          itemCount: patientViewModel.patients.length,
+                          itemBuilder: (context, index) {
+                            return BookingCard(
+                                patient: patientViewModel.patients[index]);
+                          },
+                        ),
             ),
-            CommonButton(name: 'Register')
+            CommonButton(
+              widget: Text(
+                'Register',
+                style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
+                textAlign: TextAlign.start,
+              ),
+              color: primary,
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => TreatmentReg()));
+              },
+            )
           ],
         ),
       ),

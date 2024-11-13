@@ -3,16 +3,27 @@ import 'package:noviindus_project/constants/colors.dart';
 
 class MyTextFiled extends StatelessWidget {
   final String name;
+  final Widget? suffixIcon;
+    final Widget? prefixIcon;
+
   final String hinttext;
 
   final TextEditingController? controller;
   const MyTextFiled(
-      {super.key, required this.name, this.controller, required this.hinttext});
+      {super.key,
+      required this.name,
+      this.controller,
+      required this.hinttext, this.prefixIcon,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+      padding: const EdgeInsets.only(
+        left: 18,
+        right: 18,
+        bottom: 8,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,16 +32,27 @@ class MyTextFiled extends StatelessWidget {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             textAlign: TextAlign.start,
           ),
-          const SizedBox(height: 10),
-          TextFormField(
-            controller: controller,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: grey,
-              hintText: hinttext,
-              hintStyle: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+          const SizedBox(height: 8),
+          SizedBox(
+            height: 50,
+            width: 350,
+            child: TextFormField(
+              controller: controller,
+              decoration: InputDecoration(
+                suffixIcon: suffixIcon,
+                prefixIcon:prefixIcon ,
+                contentPadding: EdgeInsets.all(16),
+                filled: true,
+                fillColor: grey,
+                hintText: hinttext,
+                hintStyle: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 0.85,
+                    color: Colors.grey,
+                  ),
+                ),
               ),
             ),
           ),

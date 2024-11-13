@@ -1,12 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/colors.dart';
+import 'package:noviindus_project/model/patientlist_model.dart';
 
 class BookingCard extends StatelessWidget {
-  final int index;
+  final Patient patient;
 
-  const BookingCard({super.key, required this.index});
+  const BookingCard({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class BookingCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$index. Vikram Singh',
+                   patient.name,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16),
                 ),
@@ -32,7 +31,7 @@ class BookingCard extends StatelessWidget {
                   style: TextStyle(color: Colors.green, fontSize: 14),
                 ),
                 const SizedBox(height: 5),
-                const Row(
+                 Row(
                   children: [
                     Icon(Icons.calendar_today, size: 16, color: Colors.grey),
                     SizedBox(width: 5),
@@ -40,7 +39,7 @@ class BookingCard extends StatelessWidget {
                     SizedBox(width: 20),
                     Icon(Icons.person, size: 16, color: Colors.grey),
                     SizedBox(width: 5),
-                    Text('Jithesh'),
+                    Text(patient.phone),
                   ],
                 ),
               ],
@@ -54,8 +53,7 @@ class BookingCard extends StatelessWidget {
               children: [
                 Text(
                   'View Booking details',
-                  style: TextStyle(
-                      color: index == 3 ? Colors.white : Colors.black),
+                  style: TextStyle(color: Colors.black),
                 ),
                 const Icon(Icons.arrow_forward_ios_sharp,
                     size: 16, color: primary),

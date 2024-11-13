@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:noviindus_project/constants/colors.dart';
 
 class CommonButton extends StatelessWidget {
-  final String name;
+  final Color color;
+  final Widget widget;
   final void Function()? onTap;
-  const CommonButton({super.key, required this.name, this.onTap});
+  const CommonButton({super.key, this.onTap, required this.color, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,12 @@ class CommonButton extends StatelessWidget {
         height: 50,
         width: 350,
         decoration:
-            BoxDecoration(color: primary, borderRadius: BorderRadius.circular(8)),
+            BoxDecoration(color:color, borderRadius: BorderRadius.circular(8)),
         child: Center(
-          child: Text(
-            name,
-            style: const TextStyle(
-                fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white),
-            textAlign: TextAlign.start,
-          ),
+          child:widget
+          
+          
+         
         ),
       ),
     );
