@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/globals.dart';
-import 'package:noviindus_project/view/pages/generatepdf.dart';
-import 'package:noviindus_project/view/pages/home_page.dart';
-import 'package:noviindus_project/view/pages/login_page.dart';
+import 'package:noviindus_project/view/pages/treatment_reg.dart';
+import 'package:noviindus_project/view_model/branch_vm.dart';
 import 'package:noviindus_project/view_model/login_vm.dart';
 import 'package:noviindus_project/view_model/patient_vm.dart';
+import 'package:noviindus_project/view_model/dialoguebox_vm.dart';
+import 'package:noviindus_project/view_model/treatmentregister_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,13 +28,16 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => PatientProvider()),
+        ChangeNotifierProvider(create: (_) => BranchViewModel()),
+        ChangeNotifierProvider(create: (_) => DialogueBoxVm()),
+        ChangeNotifierProvider(create: (_) => TreatmentRegisterVM()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'Poppins',
         ),
-        home: HomePage(),
+        home: TreatmentReg(),
       ),
     );
   }

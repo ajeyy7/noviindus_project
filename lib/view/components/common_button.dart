@@ -4,7 +4,8 @@ class CommonButton extends StatelessWidget {
   final Color color;
   final Widget widget;
   final void Function()? onTap;
-  const CommonButton({super.key, this.onTap, required this.color, required this.widget});
+  const CommonButton(
+      {super.key, this.onTap, required this.color, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,8 @@ class CommonButton extends StatelessWidget {
         height: 50,
         width: 350,
         decoration:
-            BoxDecoration(color:color, borderRadius: BorderRadius.circular(8)),
-        child: Center(
-          child:widget
-          
-          
-         
-        ),
+            BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
+        child: Center(child: widget),
       ),
     );
   }

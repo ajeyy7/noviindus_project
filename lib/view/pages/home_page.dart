@@ -73,16 +73,30 @@ class HomePage extends StatelessWidget {
                 children: [
                   const Text('Sort by :', style: TextStyle(fontSize: 16)),
                   const SizedBox(width: 10),
-                  DropdownButton<String>(
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    value: 'Date',
-                    items: ['Date', 'Name'].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (newValue) {},
+                  SizedBox(
+                    height: 35,
+                    width: 80,
+                    child: DropdownButtonFormField<String>(
+                      
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      decoration: InputDecoration(
+                      
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      value: 'Date',
+                      items: ['Date', 'Name'].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {},
+                    ),
                   ),
                 ],
               ),
@@ -105,9 +119,9 @@ class HomePage extends StatelessWidget {
                           ),
               ),
               CommonButton(
-                widget: Text(
+                widget: const Text(
                   'Register',
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
@@ -115,8 +129,8 @@ class HomePage extends StatelessWidget {
                 ),
                 color: primary,
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => TreatmentReg()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const TreatmentReg()));
                 },
               )
             ],

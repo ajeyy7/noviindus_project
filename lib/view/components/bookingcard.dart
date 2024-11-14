@@ -33,12 +33,12 @@ class BookingCard extends StatelessWidget {
                 const SizedBox(height: 5),
                  Row(
                   children: [
-                    Icon(Icons.calendar_today, size: 16, color: Colors.grey),
-                    SizedBox(width: 5),
-                    Text('31/01/2024'),
-                    SizedBox(width: 20),
-                    Icon(Icons.person, size: 16, color: Colors.grey),
-                    SizedBox(width: 5),
+                    const Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                    const SizedBox(width: 5),
+                    const Text('31/01/2024'),
+                    const SizedBox(width: 20),
+                    const Icon(Icons.person, size: 16, color: Colors.grey),
+                    const SizedBox(width: 5),
                     Text(patient.id.toString()),
                   ],
                 ),
@@ -46,8 +46,8 @@ class BookingCard extends StatelessWidget {
             ),
           ),
           const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,7 +55,7 @@ class BookingCard extends StatelessWidget {
                   'View Booking details',
                   style: TextStyle(color: Colors.black),
                 ),
-                const Icon(Icons.arrow_forward_ios_sharp,
+                Icon(Icons.arrow_forward_ios_sharp,
                     size: 16, color: primary),
               ],
             ),

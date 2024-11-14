@@ -46,14 +46,14 @@ class MyTextFiled extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: suffixIcon,
                 prefixIcon:prefixIcon ,
-                contentPadding: EdgeInsets.all(16),
+                contentPadding: const EdgeInsets.all(16),
                 filled: true,
                 fillColor: grey,
                 hintText: hinttext,
-                hintStyle: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
+                hintStyle: const TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     width: 0.85,
                     color: Colors.grey,
                   ),
