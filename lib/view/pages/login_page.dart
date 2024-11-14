@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => HomePage(),
+                              builder: (_) => const HomePage(),
                             ),
                           );
                         }
@@ -103,7 +103,7 @@ class LoginPage extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 90),
             const Text.rich(
               TextSpan(
                 text:

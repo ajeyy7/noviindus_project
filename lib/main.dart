@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/globals.dart';
-import 'package:noviindus_project/view/pages/treatment_reg.dart';
+import 'package:noviindus_project/view/pages/home_page.dart';
+import 'package:noviindus_project/view/pages/login_page.dart';
 import 'package:noviindus_project/view_model/branch_vm.dart';
 import 'package:noviindus_project/view_model/login_vm.dart';
 import 'package:noviindus_project/view_model/patient_vm.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Poppins',
         ),
-        home: TreatmentReg(),
+        home: LoginPage(),
       ),
     );
   }

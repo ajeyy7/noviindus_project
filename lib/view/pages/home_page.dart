@@ -21,10 +21,25 @@ class HomePage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {},
-          ),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () {},
+              ),
+              Positioned(
+                right: 10,
+                top: 10,
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  decoration:
+                     const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+              ),
+            ],
+          )
         ],
       ),
       body: RefreshIndicator(
@@ -74,13 +89,12 @@ class HomePage extends StatelessWidget {
                   const Text('Sort by :', style: TextStyle(fontSize: 16)),
                   const SizedBox(width: 10),
                   SizedBox(
-                    height: 35,
-                    width: 80,
+                    height: 40,
+                    width: 90,
                     child: DropdownButtonFormField<String>(
-                      
+                      isExpanded: true,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       decoration: InputDecoration(
-                      
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 10),
                         border: OutlineInputBorder(

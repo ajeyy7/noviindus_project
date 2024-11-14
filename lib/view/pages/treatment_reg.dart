@@ -37,13 +37,25 @@ class TreatmentReg extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          Badge(
-            label: const Text(''),
-            child: IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {},
-            ),
-          ),
+             Stack(
+            clipBehavior: Clip.none,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () {},
+              ),
+              Positioned(
+                right: 10,
+                top: 10,
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  decoration:
+                     const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+              ),
+            ],
+          )
         ],
       ),
       body: Padding(
@@ -318,7 +330,30 @@ class TreatmentReg extends StatelessWidget {
                         backgroundColor: primary,
                         content: Text('Treatment saved successfully!')),
                   );
-                  generatePdf(context);
+                  generatePdf(
+                      name: nameController.text,
+                      whatsapp: whatsappController.text,
+                      address: addressController.text,
+                      totalAmount: totalAmountController.text,
+                      discountAmount: discountAmountController.text,
+                      advanceAmount: advanceAmountController.text,
+                      balanceAmount: balanceAmountController.text,
+                      paymentOption: '',
+                      selectedDate: '09/09/2023',
+                      selectedHour: '',
+                      selectedMinute: '',
+                      maleCount:
+                          Provider.of<DialogueBoxVm>(context, listen: false)
+                              .maleCount
+                              .toString(),
+                      femaleCount:
+                          Provider.of<DialogueBoxVm>(context, listen: false)
+                              .femaleCount
+                              .toString(),
+                      branch: selectedBranch,
+                      selectedTreatment: '',
+                      context: context);
+                      
                 },
                 widget: const Text(
                   'Save',

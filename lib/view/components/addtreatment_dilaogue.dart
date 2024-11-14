@@ -23,30 +23,34 @@ class AddTreatmentDialogue extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Choose Treatment'),
-            DropdownButtonFormField<int>(
-              icon: const Icon(Icons.keyboard_arrow_down),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: grey,
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+            SizedBox(
+              height: 40,
+              child: DropdownButtonFormField<int>(
+                isExpanded: true,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: grey,
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
+                items: viewModel.treatments
+                    .map((treatment) => DropdownMenuItem<int>(
+                        value: treatment.id, child: Text(treatment.name)))
+                    .toList(),
+                onChanged: (int? selectedId) {
+                  if (selectedId != null) {
+                    viewModel.setSelectedTreatment(selectedId);
+                    var selectedTreatment = viewModel.treatments
+                        .firstWhere((treatment) => treatment.id == selectedId);
+                    viewModel.setTreatmentName(selectedTreatment.name);
+                    print("Selected treatment ID: $selectedId");
+                  }
+                },
               ),
-              items: viewModel.treatments
-                  .map((treatment) => DropdownMenuItem<int>(
-                      value: treatment.id, child: Text(treatment.name)))
-                  .toList(),
-              onChanged: (int? selectedId) {
-                if (selectedId != null) {
-                  viewModel.setSelectedTreatment(selectedId);
-                  var selectedTreatment = viewModel.treatments
-                      .firstWhere((treatment) => treatment.id == selectedId);
-                  viewModel.setTreatmentName(selectedTreatment.name);
-                  print("Selected treatment ID: $selectedId");
-                }
-              },
             ),
             const SizedBox(height: 20),
             Column(

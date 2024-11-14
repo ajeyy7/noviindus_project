@@ -15,7 +15,7 @@ class ApiService {
     });
 
     final response = await _dio.post(url, data: formData);
-    log(response.data);
+    print(response.data);
     if (response.statusCode == 200 && response.data['token'] != null) {
       return response.data['token'];
     }
