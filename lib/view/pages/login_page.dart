@@ -103,7 +103,7 @@ class LoginPage extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
             ),
-            const SizedBox(height: 90),
+            const SizedBox(height: 70),
             const Text.rich(
               TextSpan(
                 text:

@@ -3,18 +3,23 @@ import 'package:intl/intl.dart';
 import 'package:noviindus_project/view_model/treatmentregister_vm.dart';
 import 'package:provider/provider.dart';
 
-
 class TreatmentTimePicker extends StatelessWidget {
   const TreatmentTimePicker({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text('Treatment Time'),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Treatment Time',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            textAlign: TextAlign.start,
+          ),
+          const SizedBox(height: 10),
+          Row(
             children: [
               Expanded(
                 child: Consumer<TreatmentRegisterVM>(
@@ -82,13 +87,11 @@ class TreatmentTimePicker extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      
-      ],
+        ],
+      ),
     );
   }
 }
-
 
 class TreatmentDatePicker extends StatelessWidget {
   final String label;

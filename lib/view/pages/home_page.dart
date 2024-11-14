@@ -34,8 +34,8 @@ class HomePage extends StatelessWidget {
                 child: Container(
                   height: 10,
                   width: 10,
-                  decoration:
-                     const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                  decoration: const BoxDecoration(
+                      color: Colors.red, shape: BoxShape.circle),
                 ),
               ),
             ],
@@ -43,6 +43,8 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: RefreshIndicator(
+        backgroundColor: Colors.white,
+        color: primary,
         onRefresh: () => patientViewModel.loadPatients(),
         child: Padding(
           padding: const EdgeInsets.all(16.0),

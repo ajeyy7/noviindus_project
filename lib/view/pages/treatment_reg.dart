@@ -37,7 +37,7 @@ class TreatmentReg extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-             Stack(
+          Stack(
             clipBehavior: Clip.none,
             children: [
               IconButton(
@@ -50,8 +50,8 @@ class TreatmentReg extends StatelessWidget {
                 child: Container(
                   height: 10,
                   width: 10,
-                  decoration:
-                     const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                  decoration: const BoxDecoration(
+                      color: Colors.red, shape: BoxShape.circle),
                 ),
               ),
             ],
@@ -143,12 +143,10 @@ class TreatmentReg extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                      const SizedBox(height: 20),
                     ],
                   );
                 }),
               ),
-              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Consumer<DialogueBoxVm>(builder: (context, vm, _) {
@@ -353,7 +351,6 @@ class TreatmentReg extends StatelessWidget {
                       branch: selectedBranch,
                       selectedTreatment: '',
                       context: context);
-                      
                 },
                 widget: const Text(
                   'Save',
