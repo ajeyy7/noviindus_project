@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/globals.dart';
+import 'package:noviindus_project/view/pages/generatepdf.dart';
 import 'package:noviindus_project/view/pages/home_page.dart';
 import 'package:noviindus_project/view/pages/login_page.dart';
 import 'package:noviindus_project/view_model/login_vm.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
-        ChangeNotifierProvider(create: (_) => PatientViewModel()),
+        ChangeNotifierProvider(create: (_) => PatientProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

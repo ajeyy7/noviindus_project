@@ -39,7 +39,7 @@ class BookingCard extends StatelessWidget {
                     SizedBox(width: 20),
                     Icon(Icons.person, size: 16, color: Colors.grey),
                     SizedBox(width: 5),
-                    Text(patient.phone),
+                    Text(patient.id.toString()),
                   ],
                 ),
               ],

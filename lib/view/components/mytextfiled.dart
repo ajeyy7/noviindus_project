@@ -5,6 +5,7 @@ class MyTextFiled extends StatelessWidget {
   final String name;
   final Widget? suffixIcon;
     final Widget? prefixIcon;
+    final bool visible;
 
   final String hinttext;
 
@@ -13,6 +14,7 @@ class MyTextFiled extends StatelessWidget {
       {super.key,
       required this.name,
       this.controller,
+      this.visible=true,
       required this.hinttext, this.prefixIcon,
       this.suffixIcon});
 
@@ -27,10 +29,13 @@ class MyTextFiled extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            name,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            textAlign: TextAlign.start,
+          Visibility(
+            visible: visible,
+            child: Text(
+              name,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              textAlign: TextAlign.start,
+            ),
           ),
           const SizedBox(height: 8),
           SizedBox(

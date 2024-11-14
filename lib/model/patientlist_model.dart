@@ -1,89 +1,56 @@
-
-class PatientResponse {
-  final bool status;
-  final String message;
-  final List<Patient> patients;
-
-  PatientResponse({
-    required this.status,
-    required this.message,
-    required this.patients,
-  });
-
-  factory PatientResponse.fromJson(Map<String, dynamic> json) {
-    return PatientResponse(
-      status: json['status'],
-      message: json['message'],
-      patients: (json['patient'] as List)
-          .map((patient) => Patient.fromJson(patient))
-          .toList(),
-    );
-  }
-}
-
 class Patient {
   final int id;
-  final List<PatientDetail> details;
-  final Branch branch;
   final String name;
-  final String phone;
-  final int totalAmount;
-  final int discountAmount;
-  final int advanceAmount;
-  final int balanceAmount;
+  final List<PatientDetail> details;
 
   Patient({
     required this.id,
-    required this.details,
-    required this.branch,
     required this.name,
-    required this.phone,
-    required this.totalAmount,
-    required this.discountAmount,
-    required this.advanceAmount,
-    required this.balanceAmount,
+    required this.details,
   });
 
-  factory Patient.fromJson(Map<String, dynamic> json) {
+  factory Patient.fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      throw Exception("Null JSON data for Patient");
+    }
+
     return Patient(
       id: json['id'] ?? 0,
-      details: (json['patientdetails_set'] as List)
-          .map((detail) => PatientDetail.fromJson(detail))
-          .toList(),
-      branch: Branch.fromJson(json['branch']),
       name: json['name'] ?? '',
-      phone: json['phone'] ?? '',
-      totalAmount: json['total_amount'] ?? 0,
-      discountAmount: json['discount_amount'] ?? 0,
-      advanceAmount: json['advance_amount'] ?? 0,
-      balanceAmount: json['balance_amount'] ?? 0,
+      details: (json['details'] as List<dynamic>?)
+              ?.map((e) => PatientDetail.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 }
 
-
 class PatientDetail {
   final int id;
-  final String male;
-  final String female;
+  final int male;
+  final int female;
+  final int patient;
   final int treatment;
   final String treatmentName;
+  
 
   PatientDetail({
     required this.id,
     required this.male,
     required this.female,
+    required this.patient,
     required this.treatment,
     required this.treatmentName,
   });
 
   factory PatientDetail.fromJson(Map<String, dynamic> json) {
     return PatientDetail(
-      id: json['id'],
-      male: json['male'],
-      female: json['female'],
-      treatment: json['treatment'],
-      treatmentName: json['treatment_name'],
+      id: json['id'] ?? 0,
+      male: int.tryParse(json['male'] ?? '0') ?? 0,
+      female: int.tryParse(json['female'] ?? '0') ?? 0,
+      patient: json['patient'] ?? 0,
+      treatment: json['treatment'] ?? 0,
+      treatmentName: json['treatment_name'] ?? '',
     );
   }
 }
@@ -91,19 +58,37 @@ class PatientDetail {
 class Branch {
   final int id;
   final String name;
+  final int patientsCount;
   final String location;
+  final String phone;
+  final String mail;
+  final String address;
+  final String gst;
+  final bool isActive;
 
   Branch({
     required this.id,
     required this.name,
+    required this.patientsCount,
     required this.location,
+    required this.phone,
+    required this.mail,
+    required this.address,
+    required this.gst,
+    required this.isActive,
   });
 
   factory Branch.fromJson(Map<String, dynamic> json) {
     return Branch(
       id: json['id'],
       name: json['name'],
+      patientsCount: json['patients_count'],
       location: json['location'],
+      phone: json['phone'],
+      mail: json['mail'],
+      address: json['address'],
+      gst: json['gst'],
+      isActive: json['is_active'],
     );
   }
 }

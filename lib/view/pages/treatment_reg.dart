@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:noviindus_project/constants/colors.dart';
 import 'package:noviindus_project/view/components/common_button.dart';
 import 'package:noviindus_project/view/components/mytextfiled.dart';
+import 'package:noviindus_project/view/pages/generatepdf.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 class TreatmentReg extends StatelessWidget {
   const TreatmentReg({super.key});
@@ -376,7 +380,10 @@ class TreatmentReg extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const CommonButton(
+               CommonButton(
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GeneratePdfExample()));
+                },
                 widget:  Text(
             'Save',
             style: const TextStyle(

@@ -22,19 +22,20 @@ class ApiService {
     throw Exception('Login failed');
   }
 
-   Future<List<Patient>> getPatientList() async {
-    const String url = 'https://flutter-amr.noviindus.in/api/PatientList';
-    if (globalToken == null) throw Exception('Token is not set');
+Future<List<Patient>> fetchPatients() async {
+  if (globalToken == null) throw Exception('Token is not set');
 
-    final response = await _dio.get(
-      url,
-      options: Options(headers: {'Authorization': 'Bearer $globalToken'}),
-    );
-print({response.data});
-    if (response.statusCode == 200) {
-      final patientResponse = PatientResponse.fromJson(response.data);
-      return patientResponse.patients;
-    }
-    throw Exception('Failed to fetch patient list');
+  final response = await Dio().get(
+    'https://flutter-amr.noviindus.in/api/PatientList',
+    options: Options(headers: {'Authorization': 'Bearer $globalToken'}),
+  );
+
+  if (response.statusCode == 200) {
+    List patients = response.data['patient'];
+    return patients.map((json) => Patient.fromJson(json)).toList();
+  } else {
+    throw Exception('Failed to load patient data');
   }
+}
+
 }
